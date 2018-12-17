@@ -24,13 +24,14 @@
 char HEAD = '$';			/* the head of snake	    */
 char BODY = '*';			/* the body of snake	    */
 char BLANK = ' ';
-//int row = 10;				/* current row		    */
-//int col = 0;				/* current column 	    */
 int dir = RIGHT;			/* where head is going 	    */
 int done = 0;
-int delay = 100;			/* how long to wait	    */
+int delay = 200;			/* how long to wait	    */
 int score = 0;
 
+/* the position of item */
+int XPOS;				
+int YPOS;
 
 void set_cr_noecho_mode(void);
 int set_ticker(int);
@@ -86,7 +87,10 @@ void initSnake(){
 	insertHeader(10, 3, s);
 }
 
-
+void setWindow(){
+	move(2, 10);						
+	addstr("Score");
+}
 
 void moving(){
 	
@@ -104,6 +108,7 @@ void moving(){
 	signal(SIGALRM, on_alarm);	/* install alarm handler    */
 	set_ticker(delay);		/* start ticking     	    */
 
+	setWindow();
 	/* draw initial image       */
 	NodePtr temp = s->last;
 	for (int i = 1; i < s->lenth; i++){
@@ -185,47 +190,6 @@ void on_alarm(int signum){
 		dir = UP;
 }
 
-/*
-	// change the position of HeadOfSnake
-void on_alarm(int signum){
-	signal(SIGALRM, on_alarm);
-	mvaddch(row, col, BLANK);
-
-	switch(dir){		
-		case LEFT:
-			col -= 1;
-			mvaddch(row, col, HeadOfSnake);
-			refresh();
-			break;
-		case RIGHT:
-			col += 1;
-			mvaddch(row, col, HeadOfSnake);
-			refresh();
-			break;
-		case UP:
-			row -= 1;
-			mvaddch(row, col, HeadOfSnake);
-			refresh();
-			break;
-		case DOWN:
-			row += 1;
-			mvaddch(row, col, HeadOfSnake);
-			refresh();
-			break;
-	}
-	
-	// 임시로 설정한 가이드 라인 수정 필요
-	if (dir == LEFT && col <= 0)
-		dir = RIGHT;
-	else if (dir == RIGHT && col >= COLS)
-		dir = LEFT;
-	else if (dir == UP && row <= 0)
-		dir = DOWN;
-	else if (dir == DOWN && row >= 100)
-		dir = UP;
-}
-*/
-
 void enable_kbd_signals()
 {
 	int  fd_flags;
@@ -244,7 +208,6 @@ void set_cr_noecho_mode(void){
 	ttystate.c_cc[VMIN] = 1;
 	tcsetattr(0, TCSANOW, &ttystate);
 }
-
 
 void main(){
 	initSnake();	
