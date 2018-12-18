@@ -161,11 +161,11 @@ void helpWindow(){
 	clear();
 	setWindow();
 	mvaddstr(14, 33, "[ Welcome! ]");
-	mvaddstr(17, 22, "Press 'W' if you wannt going to UP.");	
-	mvaddstr(18, 22, "Press 'A' if you wnant going to LEFT.");	
-	mvaddstr(19, 22, "Press 'S' if you wnant going to DOWN.");	
-	mvaddstr(20, 22, "Press 'D' if you wnant going to RIGHT.");	
-	mvaddstr(22, 22, "Press 'Y' if you wnant to start.");
+	mvaddstr(17, 22, "Press 'W' if you want going to UP.");	
+	mvaddstr(18, 22, "Press 'A' if you want going to LEFT.");	
+	mvaddstr(19, 22, "Press 'S' if you want going to DOWN.");	
+	mvaddstr(20, 22, "Press 'D' if you want going to RIGHT.");	
+	mvaddstr(22, 22, "Press 'Y' if you want to start.");
 	refresh();
 	key = getch();
 	if (key == 'Y' || key == 'y'){
