@@ -305,7 +305,6 @@ void on_alarm(int signum){
 	updateWindow();
 	makeObstacle();
 	makeItem();
-	signal(SIGALRM, on_alarm);
 	changeDir(dir);
 }
 
