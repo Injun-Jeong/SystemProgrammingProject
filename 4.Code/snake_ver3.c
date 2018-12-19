@@ -1,8 +1,8 @@
-/* snake_ver2.c
+/* snake_ver3.c
 * author: 2013019033_수학과_정인준
 * description
-* - snake_ver1.c에 시작 화면 추가 및 UI 정리
-* - compile: cc snake_ver2.c set_ticker.c -lcurses -o snake_ver2
+* - snake_ver2.c에 주석 및 코드 정리
+* - compile: cc snake_ver3.c set_ticker.c -lcurses -o snake_ver3
 */
 
 #include <unistd.h>
